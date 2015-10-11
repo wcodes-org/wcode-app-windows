@@ -1,0 +1,15 @@
+1.0
+2013 APR ~
+
+1.1
+2013 APR 29
+x64: 75E2602600735E32918CBCD95620578E
+x86: BB6A07B82154A1F88F0C24607C72421B
+
+1.2
+2015 OCT 11
+x64: 
+x86: 
+- Standardized lang DLL location
+- Fixed memory beyond boundary write issue
+- Standardized dictionary name and location

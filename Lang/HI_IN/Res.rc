@@ -1,0 +1,32 @@
+# include <WinResrc.h>
+# include "..\\CommonID.h"
+
+LANGUAGE LANG_HINDI, SUBLANG_HINDI_INDIA
+# pragma code_page(1252)
+
+STRINGTABLE
+{
+	IDS_MAIN_WINDOW_CLASS				L"OCR Engine Class"
+	IDS_MAIN_WINDOW_TITLE				L"OCR Engine"
+	IDS_SPLASH_WINDOW_CLASS				L"Splash Class"
+	IDS_SPLASH_WINDOW_TITLE				L"WCode Splash"
+
+	INC_VALUE_ID(SPLASH)				L"Splash"
+	INC_VALUE_ID(ENCODE_O_DECODE)		L"Encode|Decode"
+	INC_VALUE_ID(CHECKSUM)				L"Checksum"
+	INC_VALUE_ID(MODE_GROUP)			L"ModeGroup"
+	INC_VALUE_ID(MODE_TYPE)				L"ModeType"
+
+	IDS_W_REG_FAIL						L"Window Registration Failed"
+	IDS_W_CREATE_FAIL					L"Window Creation Failed"
+	IDS_W_UL_FAIL						L"Update Layered Window Failed"
+	IDS_BM_LOAD_FAIL					L"Load Image Failed"
+	IDS_FILE_NOT_FOUND					L"File not found"
+	IDS_FILE_ACCESS_FAIL				L"File could not be accessed"
+	IDS_EXIT							L"Exit"
+	IDS_ABOUT							L"About"
+
+	IDS_ERROR							L"Error:"
+
+//	INC_VALUE_ID()	L""
+}

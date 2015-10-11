@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define Manufacturer.Name = Ujjwal Singh ?>
+  <?define Product.Dir.Name = WCode ?>
+  <?define Product.Name = WCode ?>
+  <?define Product.Version = 1.2.0.0 ?>
+  <?define Product.Lang = 1033 ?>
+  
+  <?define R_LM.GUID = "C3ED5BB0-8688-4891-A6AB-961136931506" ?>
+  
+  <?define WCode.KeyPath = "Software\[Manufacturer]\WCode" ?>
+
+  <?define Icon.Name = WCode.ico ?>
+  <?define Icon = ..\..\Design\Logo\Icon\Application.ico ?>
+
+  <?define ProgramMenu.Dir.Name = WCode ?>
+
+  <?define Dictionary.Dir.Name = Dictionary ?>
+  <?define Dictionary.GUID = "A9ED8775-2038-4AD6-8874-D401FA6B66BE" ?>
+
+  <?define WordList_EN.Name = WordList_EN.txt ?>
+  <?define WordList_EN = ..\..\Dictionary\WordList_EN.txt ?>
+
+  <?define Manual.Dir.Name = Manual ?>
+  <?define Manual.GUID = "BFC7A627-4DD3-4043-9AA9-2C829145D19C" ?>
+
+  <?define Manual.Name = Manual.rtf ?>
+  <?define Manual = Resource\Manual.rtf ?>
+
+  <?define ScreenGuide.Name = ScreenGuide.png ?>
+  <?define ScreenGuide = Resource\ScreenGuide.png ?>
+
+  <?define Res.Dir.Name = Lang ?>
+  <?define Res.File.Prefix = Res ?>
+  <?define Res.Extension = DLL.mui ?>
+
+  <?define Res-EN_US.Name = EN_US ?>
+  <?define Res-EN_US.Code = 409 ?>
+  <?define Res-HI_IN.Name = HI_IN ?>
+  <?define Res-HI_IN.Code = 439 ?>
+  <?define Res-KN_IN.Name = KN_IN ?>
+  <?define Res-KN_IN.Code = 44b ?>
+  <?define Res-NE_NP.Name = NE_NP ?>
+  <?define Res-NE_NP.Code = 461 ?>
+
+  <?define License.Name = License.rtf ?>
+  <?define License = Resource\License.rtf ?>
+
+  <?define Executable.Name = WCode.exe ?>
+
+  <?define Splash.Name = Splash.bmp ?>
+  <?define Splash = ..\..\Design\Splash.bmp ?>
+
+  <?define Resource.Dialog = Resource\Dialog.bmp ?>
+  <?define Resource.Banner = Resource\Banner.bmp ?>
+  
+  <?if $(var.Platform) = x64 ?>
+  
+  <?define ProgramFiles.Dir = ProgramFiles64Folder ?>
+
+  <?define Product.GUID = "5DBFB2E8-2CDC-47C8-8EBA-C5E96D6881E7" ?>
+  <?define Upgrade.GUID = "C942D383-985E-4B80-8E49-5E70B1FE7D6A" ?>
+  <?define Core.GUID = "B0561B39-4E7D-44AF-A544-E4792235AE35" ?>
+  <?define Language.English.GUID = "DA8C4EEE-F205-48E3-8992-EBB55467E258" ?>
+  <?define Language.Hindi.GUID = "CFA1BAC5-A7D9-4658-9238-EF1BC613C968" ?>
+  <?define Language.Kannada.GUID = "13E155D3-8E2A-44C8-AF8D-C7C27F19A680" ?>
+  <?define Language.Nepali.GUID = "303ECF68-4223-409A-8E2C-DCA9E2F87E16" ?>
+  <?define ProgramMenu.Dir.GUID = "6F991A7D-02D4-4EB1-8992-3CB6679F7B48" ?>
+  <?define ProgramMenu.Manual.GUID = "10F63D5D-A99C-4D6A-8FD7-0BC8F847E2AF" ?>
+  <?define Desktop.Executable.GUID = "ACCAF45D-2340-4193-BF72-B1BE9A5A4DAB" ?>
+
+  <?else ?>
+
+  <?define ProgramFiles.Dir = ProgramFilesFolder ?>
+
+  <?define Product.GUID = "4942E533-A726-4B22-B0A6-C1BB489D8238" ?>
+  <?define Upgrade.GUID = "0C8F42BC-51BE-4D84-A193-3DFF270E73B8" ?>
+  <?define Core.GUID = "EF0745FE-B6F4-4588-BB5D-1B5787B8FADD" ?>
+  <?define Language.English.GUID = "E0DE4630-C590-4A0B-9C49-BCF55DBDBC7A" ?>
+  <?define Language.Hindi.GUID = "604AF682-7252-4D68-8D1B-CA7EB4081D7A" ?>
+  <?define Language.Kannada.GUID = "03D8F645-1B0C-40E3-A7B4-2F7DB264C80A" ?>
+  <?define Language.Nepali.GUID = "3F00E96D-C036-47B0-9D89-872C6E961228" ?>
+  <?define ProgramMenu.Dir.GUID = "7BA8374D-B3F9-40DE-86B7-CD971EE9CF8C" ?>
+  <?define ProgramMenu.Manual.GUID = "0FE80109-56B0-4F2B-9EA8-37FC62EA51F6"?>
+  <?define Desktop.Executable.GUID = "AE18E0C9-D266-4C7B-AABD-4F6B94CAE7F6" ?>
+  
+  <?endif?>
+  
+</Include>

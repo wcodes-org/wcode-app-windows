@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <ComponentGroup Id="REG_SETTINGS">
+            <Component Id="cmpAAE00ADF052F52814320575026A19B79" Directory="TARGETDIR" Guid="78157997-3F6C-4F29-BEB1-5DA7FCC86B48" KeyPath="no">
+                <RegistryKey Key="Software\Blank\WCode\Settings" Root="HKCU">
+                    <RegistryValue Name="Checksum" Value="0" Type="integer" />
+                    <RegistryValue Name="Encode|Decode" Value="0" Type="integer" />
+                    <RegistryValue Name="ModeGroup" Value="0" Type="integer" />
+                    <RegistryValue Name="ModeType" Value="2" Type="integer" />
+                    <RegistryValue Name="Splash" Value="1" Type="integer" />
+                </RegistryKey>
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="TARGETDIR" />
+    </Fragment>
+</Wix>

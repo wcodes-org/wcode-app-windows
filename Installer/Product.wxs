@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Vars.wxi?>
+  <Product Id="$(var.Product.GUID)" Name="$(var.Product.Name)" Language="$(var.Product.Lang)" Version='$(var.Product.Version)' Manufacturer="$(var.Manufacturer.Name)" UpgradeCode='$(var.Upgrade.GUID)'>
+    <Package InstallerVersion="200" Compressed="yes" Platform='$(var.Platform)' Description='WCode - encode with words. Version: $(var.Product.Version)'/>
+    <Icon Id="WCODE_ICON" SourceFile='$(var.Icon)' />
+    <Property Id="ARPPRODUCTICON" Value='WCODE_ICON' />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Directory Id='TARGETDIR' Name="SourceDir">
+      <Directory Id='$(var.ProgramFiles.Dir)' Name="PFiles">
+        <Directory Id='APPLICATIONFOLDER' Name='$(var.Product.Dir.Name)'>
+
+          <Component Id='C_CORE' Guid='$(var.Core.GUID)'>
+            <File Id='F_WCODE_EXE' Name='$(var.Executable.Name)' DiskId='1' Source='..\$(var.Platform)\Release\$(var.Product.Dir.Name)\$(var.Executable.Name)' KeyPath='yes' />
+            <File Id='F_SPLASH_BMP' Name='$(var.Splash.Name)' DiskId='1' Source='$(var.Splash)' />
+          </Component>
+
+        <Directory Id='D_DICTIONARY_DIR' Name='$(var.Dictionary.Dir.Name)'>
+          <Component Id='C_DICTIONARY' Guid='$(var.Dictionary.GUID)'>
+              <File Id='F_WLIST_TXT' Name='$(var.WordList_EN.Name)' DiskId='1' Source='$(var.WordList_EN)' />
+          </Component>
+        </Directory>
+
+        <Directory Id='D_MANUAL_DIR' Name='$(var.Manual.Dir.Name)'>
+            <Component Id='C_MANUAL' Guid='$(var.Manual.GUID)'>
+              <File Id='F_MANUAL_RTF' Name='$(var.Manual.Name)' DiskId='1' Source='$(var.Manual)' KeyPath='yes' />
+              <File Id='F_SCREENGUIDE_PNG' Name='$(var.ScreenGuide.Name)' DiskId='1' Source='$(var.ScreenGuide)' />
+            </Component>
+          </Directory>
+
+          <Directory Id='D_LANG_DIR' Name='$(var.Res.Dir.Name)'>
+            
+            <Component Id='C_LANGUAGE_ENGLISH' Guid='$(var.Language.English.GUID)'>
+              <File Id='F_LANGUAGE_ENGLISH_DLL_MUI' Name='$(var.Res.File.Prefix)$(var.Res-EN_US.Code).$(var.Res.Extension)' DiskId='1' Source='..\$(var.Platform)\Release\Lang\$(var.Res-EN_US.Name)\$(var.Res.File.Prefix).$(var.Res.Extension)' KeyPath='yes' />
+            </Component>
+
+            <Component Id='C_LANGUAGE_HINDI' Guid='$(var.Language.Hindi.GUID)'>
+              <File Id='F_LANGUAGE_HINDI_DLL_MUI' Name='$(var.Res.File.Prefix)$(var.Res-HI_IN.Code).$(var.Res.Extension)' DiskId='1' Source='..\$(var.Platform)\Release\Lang\$(var.Res-HI_IN.Name)\$(var.Res.File.Prefix).$(var.Res.Extension)' KeyPath='yes' />
+            </Component>
+
+            <Component Id='C_LANGUAGE_KANNADA' Guid='$(var.Language.Kannada.GUID)'>
+              <File Id='F_LANGUAGE_KANNADA_DLL_MUI' Name='$(var.Res.File.Prefix)$(var.Res-KN_IN.Code).$(var.Res.Extension)' DiskId='1' Source='..\$(var.Platform)\Release\Lang\$(var.Res-KN_IN.Name)\$(var.Res.File.Prefix).$(var.Res.Extension)' KeyPath='yes' />
+            </Component>
+
+            <Component Id='C_LANGUAGE_NEPALI' Guid='$(var.Language.Nepali.GUID)'>
+              <File Id='F_LANGUAGE_NEPALI_DLL_MUI' Name='$(var.Res.File.Prefix)$(var.Res-NE_NP.Code).$(var.Res.Extension)' DiskId='1' Source='..\$(var.Platform)\Release\Lang\$(var.Res-NE_NP.Name)\$(var.Res.File.Prefix).$(var.Res.Extension)' KeyPath='yes' />
+            </Component>
+            
+          </Directory>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id='ProgramMenuFolder' Name="Programs">
+        <Directory Id='D_Program_Menu_Dir' Name="$(var.ProgramMenu.Dir.Name)">
+
+          <Component Id='C_PROGRAM_MENU' Guid='$(var.ProgramMenu.Dir.GUID)'>
+            <RemoveFolder Id='D_PROGRAM_MENU_DIR' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='$(var.WCode.KeyPath)' Type='string' Value='' KeyPath='yes' />
+            <Shortcut Id='S_PROGRAM_MENU_EXECUTABLE' Name='WCode' Target='[#F_WCODE_EXE]' WorkingDirectory='APPLICATIONFOLDER' Advertise='no' />
+          </Component>
+
+          <Component Id='C_PROGRAM_MENU_MANUAL' Guid='$(var.ProgramMenu.Manual.GUID)'>
+            <RegistryValue Root='HKCU' Key='$(var.WCode.KeyPath)' Type='string' Value='' KeyPath='yes' />
+            <Shortcut Id='S_PROGRAM_MENU_MANUAL' Name='$(var.Manual.Name)' Target='[#F_MANUAL_RTF]' Advertise='no' />
+            <Shortcut Id='S_PROGRAM_MENU_SCREENGUIDE' Name='$(var.ScreenGuide.Name)' Target='[#F_SCREENGUIDE_PNG]' Advertise='no' />
+          </Component>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id='DesktopFolder' Name="Desktop">
+        <Component Id ='C_DESKTOP_EXECUTABLE' Guid='$(var.Desktop.Executable.GUID)'>
+
+          <RegistryValue Root='HKCU' Key='$(var.WCode.KeyPath)' Type='string' Value='' KeyPath='yes' />
+          <Shortcut Id='S_DESKTOP_EXECUTABLE' Name='WCode' Target='[#F_WCODE_EXE]' WorkingDirectory='APPLICATIONFOLDER' Advertise='no' />
+
+        </Component>
+      </Directory>
+    </Directory>
+
+    <Feature Id='Complete' Title="WCode" Display='expand' Description="The Complete Package" Level='1' ConfigurableDirectory='APPLICATIONFOLDER'>
+      <ComponentRef Id='C_CORE' />
+      <ComponentGroupRef Id='REG_SETTINGS' />
+      <ComponentRef Id='C_DICTIONARY' />
+      <Feature Id='F_LANGUAGES' Title="Languages" Display='expand' Level='1'>
+        <Feature Id='F_ENGLISH' Title="English" Level='1' >
+          <ComponentRef Id='C_LANGUAGE_ENGLISH' />
+        </Feature>
+        <Feature Id='F_HINDI' Title="Hindi" Level='1000'>
+          <ComponentRef Id='C_LANGUAGE_HINDI' />
+        </Feature>
+        <Feature Id='F_KANNADA' Title="Kannada" Level='1000'>
+          <ComponentRef Id='C_LANGUAGE_KANNADA' />
+        </Feature>
+        <Feature Id='F_NEPALI' Title="Nepali" Level='1000'>
+          <ComponentRef Id='C_LANGUAGE_NEPALI' />
+        </Feature>
+      </Feature>
+      <Feature Id='F_PROGRAM_MENU' Title="Program Menu Shortcut" Display='expand' Level='1'>
+        <ComponentRef Id='C_CORE' />
+        <ComponentRef Id='C_PROGRAM_MENU' />
+        <Feature Id='F_MANUAL' Title="Manual" Level='1'>
+          <ComponentRef Id='C_MANUAL'/>
+          <ComponentRef Id='C_PROGRAM_MENU_MANUAL' />
+        </Feature>
+      </Feature>
+      <Feature Id='F_DESKTOP_SKT' Title="Desktop Shortcut" Level='1'>
+        <ComponentRef Id='C_CORE' />
+        <ComponentRef Id='C_DESKTOP_EXECUTABLE' />
+      </Feature>
+    </Feature>
+
+    <Property Id='PROGRAMFILESD'>
+      <RegistrySearch Id='ProgramFilesD' Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion" Name="ProgramFilesDir" Type="directory" />
+    </Property>
+    <CustomAction Id='Overwrite_WixSetDefaultPerMachineFolder' Property='WixPerMachineFolder' Value="[PROGRAMFILESD]\$(var.Product.Name)" Execute='immediate' />
+    <InstallUISequence>
+      <Custom Action='Overwrite_WixSetDefaultPerMachineFolder' After='WixSetDefaultPerMachineFolder' />
+    </InstallUISequence>
+
+    <Property Id='WixShellExecTarget' Value="[#F_WCODE_EXE]" />
+    <CustomAction Id='LaunchApplication' BinaryKey='WixCA' DllEntry="WixShellExec" Impersonate="yes" />
+
+    <UI>
+      <UIRef Id='WixUI_Advanced' />
+      <Publish Dialog='ExitDialog'
+          Control='Finish'
+          Event='DoAction'
+          Value='LaunchApplication'>WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+
+    <Property Id='WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT' Value="Launch application" />
+
+    <WixVariable Id='WixUILicenseRtf' Value='$(var.License)' />
+    <WixVariable Id='WixUIDialogBmp' Value='$(var.Resource.Dialog)' />
+    <WixVariable Id='WixUIBannerBmp' Value='$(var.Resource.Banner)' />
+
+    <Property Id='ApplicationFolderName' Value='$(var.Product.Dir.Name)' />
+    <Property Id='WixAppFolder' Value='WixPerMachineFolder' />
+    <Property Id='P_DESKTOP_SHORTCUT' Value='1' />
+    <Property Id='MSIINSTALLPERUSER' Value='1' />
+    <Property Id='ALLUSERS' Value='2' />
+  </Product>
+
+</Wix>

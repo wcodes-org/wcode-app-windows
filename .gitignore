@@ -1,0 +1,9 @@
+**/Archive
+**/*.suo
+**/*.ncb
+**/*.pch
+**/*.sdf
+**/*.user
+**/*.opensdf
+x64
+x86
