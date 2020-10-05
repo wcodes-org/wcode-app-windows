@@ -5,5 +5,7 @@
 **/*.sdf
 **/*.user
 **/*.opensdf
+**/*.aps
+.vs
 x64
 x86
