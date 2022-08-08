@@ -203,18 +203,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Documentation\WCode\Considerations.gdoc">
-      <Filter>Notes</Filter>
-    </None>
-    <None Include="..\Documentation\WCode\Design.gdoc">
-      <Filter>Notes</Filter>
-    </None>
-    <None Include="..\Documentation\WCode\Limitations.gdoc">
-      <Filter>Notes</Filter>
-    </None>
-    <None Include="..\Documentation\WCode\Numbers.gdoc">
-      <Filter>Notes</Filter>
-    </None>
     <None Include="WCode.vcproj.user" />
   </ItemGroup>
 </Project>
